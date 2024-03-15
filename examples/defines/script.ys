@@ -1,0 +1,6 @@
+verific -vlog-incdir includes
+verific -vlog-define IDX1=1
+verific -sv defines.svh top.sv
+hierarchy -top top
+clean
+show

@@ -1,0 +1,18 @@
+Our tools handle this a bit differently than you may be used to. At the end of the [script] section, SBY will perform a check to make sure there are no blackboxes in the design, and error out if it finds any. But it is still possible to achieve the same goal, the process is as follows:
+
+- First, if you do not want to load the files for the modules B, C and D at all (e.g. if you don't have the files, or it takes a long time to load), you still need to substitute a blackbox declaration so that the tool knows which ports are input and which ports are output. In VHDL, having a component declaration in the preamble of the instantiating entity is sufficient for this, but in SystemVerilog you need to add a different file that has some declarations like this:
+
+(* blackbox *)
+module B (input foo, output bar);
+endmodule
+
+If you are ok with loading the files but just want to exclude the contents of the modules for the compilation process, you can skip this step and just do the next part.
+
+- Now, once you have loaded the design, you need to tell the tool that you want to actually remove all instances of these modules from the design and leave their outputs unconstrained. To do this you can use the `cutpoint` followed by the `delete` command for each blackbox module:
+
+cutpoint t:B t:C t:D
+delete t:B t:C t:D
+
+Note that these commands need to be after the design is loaded (either with `hierarchy -top` or `verific -import`), but they can be before `prep`.
+
+In the case where a non-blackbox module is instantiated with non-default parameters, the full name with the parameter values as it is printed during import is needed, but you can use * wildcard to pattern match on the module name, e.g. t:B*. (For full documentation on all the ways you can select design elements in yosys, you can consult this documentation section: https://yosyshq.readthedocs.io/projects/yosys/en/manual-rewrite/using_yosys/more_scripting/selections.html For example, you can target only specific instances of a module using c:inst_name syntax.)
