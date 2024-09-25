@@ -90,6 +90,30 @@ is the cycle in which the assertion does not hold.  Check out our `quickstart
 guide <https://yosyshq.readthedocs.io/projects/sby/en/latest/quickstart.html>`_
 for a worked example of examining and fixing a failing assertion.
 
+``smtbmc`` induction failures don't start from reset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Q:** Why does the ``smtbmc`` engine in ``prove`` mode return ``FAIL`` for induction, giving a
+counterexample trace that doesn't even start at reset?
+
+**A:** The ``smtbmc`` engine uses a technique called k-induction in ``prove`` mode. This tries to
+prove your design correct by checking that two facts hold:
+
+#. Basecase: The assertions hold for the first ``depth`` cycles from reset
+#. Induction: If the assertions hold for any ``depth`` cycles in a row, they also hold in the next cycle
+
+If ``smtbmc`` can prove both of these, the assertions will always hold in the design by
+the `principle of mathematical induction <https://en.wikipedia.org/wiki/Mathematical_induction>`_.
+``smtbmc`` can report two types of failure for this proof, a basecase failure or an induction
+failure. A basecase failure indicates a legitimate failure of the assertion found starting from
+a reset state, whereas an induction failure instead just means that ``smtbmc`` was unable to establish
+a complete proof. This will create a counterexample trace ``trace_induct.vcd`` that starts in an
+arbitrary non-reset state and finishes by failing the assertion.
+
+To help ``smtbmc`` prove the assertion, you can increase the ``depth`` option or add assertions
+to help constrain the inductive proof. If the property is true, the states before the failure
+in the induction counterexample will be states that aren't actually reachable, so adding assertions
+to mark them bad helps the solver find a proof for a lower ``depth``.
 
 Design initialisation
 ^^^^^^^^^^^^^^^^^^^^^
