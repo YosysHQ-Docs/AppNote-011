@@ -1,47 +1,23 @@
 #!/usr/bin/env python3
 project = 'YosysHQ AppNote-011'
 author = 'YosysHQ GmbH'
-copyright ='2021 YosysHQ GmbH'
-
-templates_path = ['_templates']
+copyright ='2025 YosysHQ GmbH'
 
 # select HTML theme
-html_theme = "furo"
-html_static_path = ['_static']
-
-html_logo = '_static/logo.png'
-html_favicon = '_static/favico.png'
+html_theme = "furo-ys"
 html_css_files = ['custom.css']
+html_theme_options: dict[str] = {
+    "source_repository": "https://github.com/YosysHQ-Docs/AppNote-011/",
+    "source_branch": "main",
+    "source_directory": "docs/source/",
+}
 
 # These folders are copied to the documentation's HTML output
 html_static_path = ['_static']
 
-# code blocks style 
-pygments_style = 'colorful'
-highlight_language = 'systemverilog'
-
-html_theme_options = {
-    "sidebar_hide_name": True,
-
-    "light_css_variables": {
-        "color-brand-primary": "#d6368f",
-        "color-brand-content": "#4b72b8",
-        "color-api-name": "#8857a3",
-        "color-api-pre-name": "#4b72b8",
-        "color-link": "#8857a3",
-    },
-
-    "dark_css_variables": {
-        "color-brand-primary": "#e488bb",
-        "color-brand-content": "#98bdff",
-        "color-api-name": "#8857a3",
-        "color-api-pre-name": "#4b72b8",
-        "color-link": "#be95d5",
-    },
-}
-
 extensions = ['sphinx.ext.autosectionlabel']
 
+# referencing across different docs
 extensions += ['sphinx.ext.intersphinx']
 intersphinx_mapping = {
     'base': ('https://yosyshq.readthedocs.io/en/latest', None),
