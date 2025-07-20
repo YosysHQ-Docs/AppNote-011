@@ -122,7 +122,7 @@ be replaced with an ``anyseq`` wire, and constrained with an assumption to take
 the desired value when it is known to be stable. It is also a good idea to add
 an assertion checking that the conditions leading to an unstable loop cannot
 happen. Note that even with this assertion, if unstable loops can occur in other
-cases the design could suffer from `overconstraint due to assumptions`_.
+cases the design could suffer from :ref:`overconstraint due to assumptions`.
 
 .. code-block:: systemverilog
 
