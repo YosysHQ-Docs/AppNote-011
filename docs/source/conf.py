@@ -45,5 +45,6 @@ extensions = ['sphinx.ext.autosectionlabel']
 extensions += ['sphinx.ext.intersphinx']
 intersphinx_mapping = {
     'base': ('https://yosyshq.readthedocs.io/en/latest', None),
+    'yosys': ('https://yosyshq.readthedocs.io/projects/yosys/en/latest', None),
     'sby': ('https://yosyshq.readthedocs.io/projects/sby/en/latest', None),
 }
