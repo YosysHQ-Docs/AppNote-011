@@ -7,6 +7,14 @@ Design setup FAQs
 .. TODO
 
 
+SystemVerilog Assertions (SVA)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Q:** What subset of SVA is supported?
+
+**A:** Refer to the SBY docs: :external+sby:ref:`supported sva property syntax`.
+
+
 SVA+VHDL
 ^^^^^^^^
 
@@ -14,14 +22,6 @@ SVA+VHDL
 
 **A:** Refer to the SBY docs: :external+sby:ref:`sva properties in a vhdl
 design`.
-
-
-SystemVerilog Assertions (SVA)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Q:** What subset of SVA is supported?
-
-**A:** Refer to the SBY docs: :external+sby:ref:`supported sva property syntax`.
 
 
 Blackboxing
