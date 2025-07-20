@@ -41,3 +41,9 @@ html_theme_options = {
 }
 
 extensions = ['sphinx.ext.autosectionlabel']
+
+extensions += ['sphinx.ext.intersphinx']
+intersphinx_mapping = {
+    'base': ('https://yosyshq.readthedocs.io/en/latest', None),
+    'sby': ('https://yosyshq.readthedocs.io/projects/sby/en/latest', None),
+}

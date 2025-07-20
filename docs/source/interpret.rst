@@ -8,9 +8,9 @@ Where do assertions fail
 
 **A:** If an assertion is failing, SBY will provide a counterexample trace.
 Provided you are not using the ``append`` option, the final cycle in this trace
-is the cycle in which the assertion does not hold.  Check out our `quickstart
-guide <https://yosyshq.readthedocs.io/projects/sby/en/latest/quickstart.html>`_
-for a worked example of examining and fixing a failing assertion.
+is the cycle in which the assertion does not hold.  Check out our
+:external+sby:doc:`quickstart guide <quickstart>` for a worked example of
+examining and fixing a failing assertion.
 
 
 Overconstraint due to assumptions

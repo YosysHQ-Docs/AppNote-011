@@ -8,19 +8,18 @@ Choosing an engine and solver
 verifying my design?
 
 **A:** Different combinations of engine and solver will perform differently and
-may support different features or functionalities.  The `SBY engines reference
-<https://yosyshq.readthedocs.io/projects/sby/en/latest/reference.html#engines-section>`_
-lists all currently supported engines, their options, available solvers, and
-which modes they operate in.  At this time, a comprehensive comparison of when
-to use different engines/solvers is not yet available.
+may support different features or functionalities.  The :external+sby:ref:`SBY
+engines reference <engines section>` lists all currently supported engines,
+their options, available solvers, and which modes they operate in.  At this
+time, a comprehensive comparison of when to use different engines/solvers is not
+yet available.
 
 With the introduction of the ``--autotune`` option it is now possible to
 automatically compare available engines for a given SBY task.  Autotune will run
 each engine, providing a report of time taken and the status returned.  This can
 be used to quickly determine the fastest configuration while continuing to
-iterate on a design. Check out the `autotune docs
-<https://yosyshq.readthedocs.io/projects/sby/en/latest/autotune.html>`_ for more
-information.
+iterate on a design. Check out the :external+sby:doc:`autotune docs <autotune>`
+for more information.
 
 
 Tool runtime
