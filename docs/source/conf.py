@@ -24,3 +24,30 @@ intersphinx_mapping = {
     'yosys': ('https://yosyshq.readthedocs.io/projects/yosys/en/latest', None),
     'sby': ('https://yosyshq.readthedocs.io/projects/sby/en/latest', None),
 }
+
+# hacked up cmd-ref linking
+from sphinx.application import Sphinx
+from sphinx.domains import Domain, ObjType
+from sphinx.roles import XRefRole
+
+class CommandDomain(Domain):
+    name = 'cmd'
+    label = 'Yosys commands'
+
+    object_types = {
+        'cmd': ObjType('command', 'ref')
+    }
+
+    roles = {
+        'ref': XRefRole()
+    }
+
+    def get_full_qualified_name(self, node):
+        """Return full qualified name for a given node"""
+        modname = "cmd:def" # ?
+        clsname = "DirectiveAdapter" # ‽
+        target = node.get('reftarget')
+        return '.'.join(filter(None, [modname, clsname, target]))
+
+def setup(app: Sphinx):
+    app.add_domain(CommandDomain)
