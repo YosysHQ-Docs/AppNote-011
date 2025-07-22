@@ -44,4 +44,4 @@ If your design already contains blackbox modules, you can use ``cutpoint
 **Q:** Is it possible to blackbox all multipliers in a design?
 
 **A:** Yes!  Calling ``cutpoint t:$mul`` after loading the design will add
-cutpoints for all cells of type ``$mul``, i.e. all of the mutlipliers.
+cutpoints for all cells of type ``$mul``, i.e. all of the multipliers.
