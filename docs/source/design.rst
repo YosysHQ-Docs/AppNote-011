@@ -38,6 +38,9 @@ with ``$anyseq`` cells which the solver can assign any value to at each step.
 This then allows the module to be verified independently of the rest of the
 design.
 
+If your design already contains blackbox modules, you can use ``cutpoint
+-blackbox`` to replace all instances of blackboxes with a formal cut point.
+
 **Q:** Is it possible to blackbox all multipliers in a design?
 
 **A:** Yes!  Calling ``cutpoint t:$mul`` after loading the design will add
