@@ -11,7 +11,8 @@ Tabby CAD FAQs for Formal Use
 
    .. intro.rst
 
-   faq_sby.rst
-   
-   .. faq_mcy.rst
-   .. faq_eqy.rst
+   docs.rst
+   design.rst
+   sby_config.rst
+   interpret.rst
+   unexpected.rst
