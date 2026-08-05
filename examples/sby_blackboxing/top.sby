@@ -1,0 +1,21 @@
+[tasks]
+cover
+prove
+
+[options]
+cover: mode cover
+prove: mode prove
+depth 10
+
+[engines]
+smtbmc yices
+
+[script]
+verific -sv top.v
+hierarchy -top top
+cutpoint t:Delay* t:Unknown
+delete t:Delay* t:Unknown
+prep
+
+[files]
+top.v

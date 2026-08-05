@@ -1,0 +1,9 @@
+This example demonstrates three common ways of defining values.
+
+1. include.svh: Definitions that are in a file that is included using an `include directive. It will look for these in the directory where yosys is run, which for sby is the src/ directory, so listing in [files] should be enough. If you give destination names to place the files within subdirectories inside src/ (like for the `foo/bar.sv /data/prj42/modules/foobar.sv` example in the documentation) you may need to add a command `verific -vlog-incdir foo` at the beginning of the script to tell it to also look for include files in the src/foo/ subdirectory.
+
+2. defines.svh: Definitions that are just in a separate file that is not included using `include. These are only visible within the same compilation unit, so you need to list this file and any file that needs the definitions in the same line: `verific -sv defines.svh top.sv`.
+
+3. Macro definitions that are set directly from the script: these are set using the command `verific -vlog-define MACRO=value`
+
+Also, a small side note, you can choose between two commands to load files, `read` and `verific`. `read` has a simplified interface for basic loading, `verific` has more advanced configuration options. We recommend to never mix the two within the same script, either use only `read` or only `verific`. If you want to use `read`, the corresponding commands for the above would be `read -incdir foo` and `read -define MACRO=value`.
